@@ -6,39 +6,39 @@
 	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
 	
 	<script type="text/javascript">
-				var friendsList = new Array();
-		function addFriend() {
-			friendsList.push(document.getElementById('names').value);
+				var bandList = new Array();
+		function addBand() {
+			bandList.push(document.getElementById('names').value);
 			
-					localStorage.setItem("friends", JSON.stringify(friendsList));
+					localStorage.setItem("bands", JSON.stringify(bandList));
 					document.getElementById('names').value='';
-					document.getElementById("outputDiv").innerHTML = "Your friend's names are: " + friendsList;
+					document.getElementById("outputDiv").innerHTML = "Your favorite bands are: " + bandList;
 		}
 		
 		function reset(){
-			friendsList = [];
+			bandList = [];
 			document.getElementById("outputDiv").innerHTML = "";
 		}
 		
 		function retrieve(){
-			document.getElementById("outputDiv2").innerHTML = localStorage.friends + " See, I don't forget!";
+			document.getElementById("outputDiv2").innerHTML = localStorage.bands + " See, I don't forget!";
 		}
 		
 		function coolness(){
-		var retrieve = localStorage.getItem("friends");
+		var retrieve = localStorage.getItem("bands");
 			var names = JSON.parse(retrieve);
 			for (i = 0; i < names.length; i++){
 				var random = Math.floor((Math.random() * 50) + 1);
 				if (names[i] == document.getElementById("name2").value){
 						if (random < 25){
-							document.getElementById("outputDiv3").innerHTML = names[i] + " is cool.";
+							document.getElementById("outputDiv3").innerHTML = names[i] + " totally rocks! (Blast it loud!)";
 							break;
 						}else{
-							document.getElementById("outputDiv3").innerHTML = names[i] + " is lame!";
+							document.getElementById("outputDiv3").innerHTML = names[i] + " is lame! (Listen in secret.)";
 							break;
 						}
 				} else{
-					document.getElementById("outputDiv3").innerHTML = "You don't have any friends named " + document.getElementById("name2").value + ".";
+					document.getElementById("outputDiv3").innerHTML = "You don't listen to " + document.getElementById("name2").value + ".";
 				}
 				
 			}
@@ -133,25 +133,25 @@
 
 <body>
 	<header>
-	<a href="index.html">
+	<a href="main.html">
 		<h1>CIT 261 - J.D. Jensen</h1>
 		<h2>Application Development</h2>
 	</a>
 	</header>
 	<div class="background">
 		<h2>Local Storage API:</h2>
-		<h3>Your Friends</h3>
-		<p>Let's make a list of your friend's names. Don't worry, I won't forget them.</p>
+		<h3>Check Your Taste in Music!</h3>
+		<p>Are you worried that the bands you like are lame? Do you want to feel more confident about rocking your jams in public? I am here to help! Start by typing in the name of a band or artist you listen to. Type in as many as you like, one at a time.</p>
 		<input type="text" id="names"></input>
-		<button onclick="addFriend()">Enter Friend</button>
-		<button onclick="reset()">Reset Friend List</button>
+		<button onclick="addBand()">Enter Band or Artist name:</button>
+		<button onclick="reset()">Reset Band List</button>
 		<div id="outputDiv"></div>
 	
-		<p>What are their names again? (I will remember even if you refresh the page! Making a new friend list will reset/replace the old one stored.)</p>
-		<button onclick="retrieve()">Retrieve List</button>
+		<p>Check my knowledge! (I remember your bands, even if you refresh the page! Making a new band list will reset/replace the old one stored.)</p>
+		<button onclick="retrieve()">Retrieve Band List</button>
 		<div id="outputDiv2"></div>
 		
-		<p>Now, let's see if your friends are cool or lame! Enter the name of a friend you have added to your friends list!</p>
+		<p>Now, it's the moment of truth! Let's see if is the music you listen to is cool or lame. Enter the name of a band or artist you mentioned to me earlier.</p>
 		<input type="text" id="name2"></input>
 		<button onclick="coolness()">Check Coolness</button>
 		<div id="outputDiv3"></div>
