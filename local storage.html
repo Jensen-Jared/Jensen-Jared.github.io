@@ -12,7 +12,7 @@
 			
 					localStorage.setItem("bands", JSON.stringify(bandList));
 					document.getElementById('names').value='';
-					document.getElementById("outputDiv").innerHTML = "Your favorite bands are: " + bandList;
+					document.getElementById("outputDiv").innerHTML = "Your favorite bands are: " + bandList; + " "
 		}
 		
 		function reset(){
@@ -49,17 +49,18 @@
 			function story(){
 				var madLib = {
 				
+					"verb":document.getElementById('verb').value,
 					"person":document.getElementById('person').value,
-					"adj":document.getElementById('adjective').value,
-					"place":document.getElementById('place').value,
-					"food":document.getElementById('food').value,
+					"verb2":document.getElementById('verb2').value,
+					"noun":document.getElementById('noun').value,
+					"noun2":document.getElementById('noun2').value,
 					
 				};
 				localStorage.setItem("story", JSON.stringify(madLib));
 				var retrieveStory = localStorage.getItem("story");
 				var story = JSON.parse(retrieveStory);
 				
-				document.getElementById("outputDiv4").innerHTML = "Once upon a time there was " + story.person + ". " + "They were very " + story.adj + " and everyone loved them. One day " + story.person + " went on a trip to " + story.place + " to eat some " + story.food + ". After the long journey, " + story.person + " arrived at " + story.place + " and ate some " + story.food + " until it was all gone. " + story.person + " licked their plate clean and exclaimed, 'That was some delicious " + story.food + "!' They became a little less " + story.adj + " that day.";
+				document.getElementById("outputDiv4").innerHTML = "Let it " + story.verb + ", let it " + story.verb + "! "<br>"Can't hold it back anymore." <br> "Let it " + story.verb + ", let it " + story.verb + "!"<br>"Turn away and " + story.verb2 + " the door." <br> "I don't care what they're going to say!" <br> "Let the " + story.noun + " rage on." <br> "The " + story.noun2 + " never bothered" + story.person + " anyway.";
 				
 			}
 			
@@ -67,7 +68,7 @@
 				var retrieveStory = localStorage.getItem("story");
 				var story = JSON.parse(retrieveStory);
 				
-				document.getElementById("outputDiv4").innerHTML = "Once upon a time there was " + story.person + ". " + "They were very " + story.adj + " and everyone loved them. One day " + story.person + " went on a trip to " + story.place + " to eat some " + story.food + ". After the long journey, " + story.person + " arrived at " + story.place + " and ate some " + story.food + " until it was all gone. " + story.person + " licked their plate clean and exclaimed, 'That was some delicious " + story.food + "!' They became a little less " + story.adj + " that day.";
+				document.getElementById("outputDiv4").innerHTML = "Let it " + story.verb + ", let it " + story.verb + "! "<br>"Can't hold it back anymore." <br> "Let it " + story.verb + ", let it " + story.verb + "!"<br>"Turn away and " + story.verb2 + " the door." <br> "I don't care what they're going to say!" <br> "Let the " + story.noun + " rage on." <br> "The " + story.noun2 + " never bothered" + story.person + " anyway.";
 				
 			}
 			
@@ -143,7 +144,7 @@
 		<h3>Check Your Taste in Music!</h3>
 		<p>Are you worried that the bands you like are lame? Do you want to feel more confident about rocking your jams in public? I am here to help! Start by typing in the name of a band or artist you listen to. Type in as many as you like, one at a time.</p>
 		<input type="text" id="names"></input>
-		<button onclick="addBand()">Enter Band or Artist name:</button>
+		<button onclick="addBand()">Enter Band or Artist name</button>
 		<button onclick="reset()">Reset Band List</button>
 		<div id="outputDiv"></div>
 	
@@ -156,14 +157,15 @@
 		<button onclick="coolness()">Check Coolness</button>
 		<div id="outputDiv3"></div>
 		
-		<h3>Madlib</h3>
-		<p>Let's write a story! Enter the following words below:<p>
+		<h3>Madlibs</h3>
+		<p>Now let's write your own song! Enter the following words below:<p>
 		<input type="text" id="person" placeholder="Person"></input><br>
-		<input type="text" id="adjective" placeholder="Adjective"></input><br>
-		<input type="text" id="place" placeholder="Place"></input><br>
-		<input type="text" id="food" placeholder="Food"></input><br>
-		<button onclick="story()">Write the Story!</button>
-		<button onclick="storyLast()">Remember Previous Story</button>
+		<input type="text" id="noun" placeholder="Noun"></input><br>
+		<input type="text" id="verb" placeholder="Verb"></input><br>
+		<input type="text" id="noun2" placeholder="Another Noun"></input><br>
+		<input type="text" id="verb2" placeholder="Another Verb"></input><br>
+		<button onclick="story()">Write the Song!</button>
+		<button onclick="storyLast()">Remember Previous Song</button>
 		<div id="outputDiv4"></div>
 		
 		<h3>Objects</h3>
