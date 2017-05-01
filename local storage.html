@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Local Storage API</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+				var friendsList = new Array();
+		function addFriend() {
+			friendsList.push(document.getElementById('names').value);
+			
+					localStorage.setItem("friends", JSON.stringify(friendsList));
+					document.getElementById('names').value='';
+					document.getElementById("outputDiv").innerHTML = "Your friend's names are: " + friendsList;
+		}
+		
+		function reset(){
+			friendsList = [];
+			document.getElementById("outputDiv").innerHTML = "";
+		}
+		
+		function retrieve(){
+			document.getElementById("outputDiv2").innerHTML = localStorage.friends + " See, I don't forget!";
+		}
+		
+		function coolness(){
+		var retrieve = localStorage.getItem("friends");
+			var names = JSON.parse(retrieve);
+			for (i = 0; i < names.length; i++){
+				var random = Math.floor((Math.random() * 50) + 1);
+				if (names[i] == document.getElementById("name2").value){
+						if (random < 25){
+							document.getElementById("outputDiv3").innerHTML = names[i] + " is cool.";
+							break;
+						}else{
+							document.getElementById("outputDiv3").innerHTML = names[i] + " is lame!";
+							break;
+						}
+				} else{
+					document.getElementById("outputDiv3").innerHTML = "You don't have any friends named " + document.getElementById("name2").value + ".";
+				}
+				
+			}
+			
+			
+			}
+			
+			function story(){
+				var madLib = {
+				
+					"person":document.getElementById('person').value,
+					"adj":document.getElementById('adjective').value,
+					"place":document.getElementById('place').value,
+					"food":document.getElementById('food').value,
+					
+				};
+				localStorage.setItem("story", JSON.stringify(madLib));
+				var retrieveStory = localStorage.getItem("story");
+				var story = JSON.parse(retrieveStory);
+				
+				document.getElementById("outputDiv4").innerHTML = "Once upon a time there was " + story.person + ". " + "They were very " + story.adj + " and everyone loved them. One day " + story.person + " went on a trip to " + story.place + " to eat some " + story.food + ". After the long journey, " + story.person + " arrived at " + story.place + " and ate some " + story.food + " until it was all gone. " + story.person + " licked their plate clean and exclaimed, 'That was some delicious " + story.food + "!' They became a little less " + story.adj + " that day.";
+				
+			}
+			
+			function storyLast(){
+				var retrieveStory = localStorage.getItem("story");
+				var story = JSON.parse(retrieveStory);
+				
+				document.getElementById("outputDiv4").innerHTML = "Once upon a time there was " + story.person + ". " + "They were very " + story.adj + " and everyone loved them. One day " + story.person + " went on a trip to " + story.place + " to eat some " + story.food + ". After the long journey, " + story.person + " arrived at " + story.place + " and ate some " + story.food + " until it was all gone. " + story.person + " licked their plate clean and exclaimed, 'That was some delicious " + story.food + "!' They became a little less " + story.adj + " that day.";
+				
+			}
+			
+			function setProfile(){
+				this.name = document.getElementById('name').value;
+				this.age = document.getElementById('age').value;
+				this.location = document.getElementById('location').value;
+				this.color = document.getElementById('color').value;
+				this.myProfile = function(){
+					return "Name: " + this.name + "<br>" +
+					"Age: " + this.age + "<br>" +
+					"Location: " + this.location + "<br>" +
+					"Favorite Color: " + this.color + "<br>";
+				}
+				
+			}
+			
+			function create(){
+				var newProfile = new setProfile();
+				localStorage.setItem("profile", JSON.stringify(newProfile));
+				document.getElementById("outputDiv5").innerHTML = newProfile.myProfile();
+				
+			}
+			
+			function remember(){
+				var retrieveProfile = localStorage.getItem("profile");
+				var profileText = JSON.parse(retrieveProfile);
+				document.getElementById("outputDiv5").innerHTML = "Name: " + profileText.name + "<br>" +
+					"Age: " + profileText.age + "<br>" +
+					"Location: " + profileText.location + "<br>" +
+					"Favorite Color: " + profileText.color + "<br>";
+			}
+			
+			function styleIt(){
+				var styleArray = {
+					"color":document.getElementById('boxColor').value,
+					"width":document.getElementById('width').value + "px",
+					"height":document.getElementById('height').value + "px",
+					"diameter":document.getElementById('rounded').value + "px",
+					};
+					
+				document.getElementById("storageStyle").style.background = styleArray["color"];
+				document.getElementById("storageStyle").style.width = styleArray["width"];
+				document.getElementById("storageStyle").style.height = styleArray["height"];
+				document.getElementById("storageStyle").style.borderRadius = styleArray["diameter"];
+				
+				localStorage.setItem("style", JSON.stringify(styleArray));
+				}
+				
+			function rememberStyle(){
+				var retrieveStyle = localStorage.getItem("style");
+				var returnedStyle = JSON.parse(retrieveStyle);
+				
+				document.getElementById("storageStyle").style.background = returnedStyle.color;
+				document.getElementById("storageStyle").style.width = returnedStyle.width;
+				document.getElementById("storageStyle").style.height = returnedStyle.height;
+				document.getElementById("storageStyle").style.borderRadius = returnedStyle.diameter;
+			}
+			
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="index.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Local Storage API:</h2>
+		<h3>Your Friends</h3>
+		<p>Let's make a list of your friend's names. Don't worry, I won't forget them.</p>
+		<input type="text" id="names"></input>
+		<button onclick="addFriend()">Enter Friend</button>
+		<button onclick="reset()">Reset Friend List</button>
+		<div id="outputDiv"></div>
+	
+		<p>What are their names again? (I will remember even if you refresh the page! Making a new friend list will reset/replace the old one stored.)</p>
+		<button onclick="retrieve()">Retrieve List</button>
+		<div id="outputDiv2"></div>
+		
+		<p>Now, let's see if your friends are cool or lame! Enter the name of a friend you have added to your friends list!</p>
+		<input type="text" id="name2"></input>
+		<button onclick="coolness()">Check Coolness</button>
+		<div id="outputDiv3"></div>
+		
+		<h3>Madlib</h3>
+		<p>Let's write a story! Enter the following words below:<p>
+		<input type="text" id="person" placeholder="Person"></input><br>
+		<input type="text" id="adjective" placeholder="Adjective"></input><br>
+		<input type="text" id="place" placeholder="Place"></input><br>
+		<input type="text" id="food" placeholder="Food"></input><br>
+		<button onclick="story()">Write the Story!</button>
+		<button onclick="storyLast()">Remember Previous Story</button>
+		<div id="outputDiv4"></div>
+		
+		<h3>Objects</h3>
+		<p>Let's create an object to store into local storage. Enter your details:</p>
+		<input type="text" id="name" placeholder="Name"></input><br>
+		<input type="text" id="age" placeholder="Age"></input><br>
+		<input type="text" id="location" placeholder="Location"></input><br>
+		<input type="text" id="color" placeholder="Favorite Color"></input><br>
+		<button onclick="create()">Create Profile</button><button onclick="remember()">Remember Profile</button>
+		<div id="outputDiv5"></div>
+		
+		<h3>Style</h3>
+		<p>Give this box your own style:</p>
+		<input type="text" id="boxColor" placeholder="Color"></input><br>
+		<input type="text" id="width" placeholder="Width"></input><br>
+		<input type="text" id="height" placeholder="Height"></input><br>
+		<input type="text" id="rounded" placeholder="Edge Diameter"></input><br>
+		<button onclick="styleIt()">Style It</button><button onclick="rememberStyle()">Remember Style</button><br><br>
+		<div id="storageStyle"></div>
+
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>
