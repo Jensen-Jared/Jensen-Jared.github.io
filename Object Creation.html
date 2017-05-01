@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Object Creation</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		var totalMembers = 0;
+		var member1;
+		var member2;
+		var member3;
+		var member4;
+		var chosen;
+		
+		function character(){
+			this.name = document.getElementById('name').value;
+			this.gender = document.getElementById('gender').value;
+			this.class = document.getElementById('class').value;
+			this.personality = document.getElementById('personality').value;
+			this.profile =	function(){ 
+								return  "Name: " + this.name + "<br>" + 
+							   "Gender: " + this.gender + "<br>" + 
+							   "Class: " + this.class + "<br>" + 			
+							   "Personality: " + this.personality + "<br>" +
+							   "Eye Color: " + this.eyecolor + "<br>";
+							   }
+			this.changeName = function (name) {
+									this.name = name;
+								}
+		}
+		
+		function addChar (){
+			totalMembers += 1;
+			 
+			if (totalMembers == 1){
+				member1 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 1");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(1);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
+			}
+			else if(totalMembers == 2){
+				member2 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 2");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(2);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
+			}
+			else if(totalMembers == 3){
+				member3 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 3");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(3);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
+			}
+			else if(totalMembers == 4){
+				member4 = new character();
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Member 4");
+				btn.appendChild(t);
+				btn.addEventListener ("click", function() {
+						members(4);
+						});
+				document.getElementById('outputDiv4').appendChild(btn);
+				
+				document.getElementById('memberInput').innerHTML = '';
+				return;
+			}
+			document.getElementById('name').value=''; 
+			document.getElementById('gender').value=''; 
+			document.getElementById('class').value=''; 
+			document.getElementById('personality').value='';
+			
+		}
+		
+		function members(number){
+			chosen = number;
+			if (number == 1){
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (number == 2){
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (number == 3){
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (number == 4){
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+		}
+		
+		function eyeColor(){
+			if (chosen == 1) {
+				member1.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (chosen == 2) {
+				member2.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (chosen == 3) {
+				member3.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (chosen == 4) {
+				member4.eyecolor = document.getElementById('eyeColor').value;
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+			else{
+				document.getElementById('outputDiv2').innerHTML = "You need to select your existing party member first!";
+			}
+		}
+		
+		function changeName(){
+			if (chosen == 1) {
+				member1.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member1.profile();
+			}
+			else if (chosen == 2) {
+				member2.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member2.profile();
+			}
+			else if (chosen == 3) {
+				member3.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member3.profile();
+			}
+			else if (chosen == 4) {
+				member4.changeName(document.getElementById('newName').value);
+				document.getElementById('outputDiv').innerHTML = member4.profile();
+			}
+			else{
+				document.getElementById('outputDiv2').innerHTML = "You need to select your existing party member first!";
+			}
+		}
+		
+		function onward() {
+			if (totalMembers < 4){
+				document.getElementById('outputDiv3').innerHTML = "You need to create four party members to start the adventure.";
+			}else{
+				document.getElementById('outputDiv3').innerHTML = "Your team comes across a horrible beast! Everyone was eaten alive. Too bad. Guess putting together a team wasn't worth all the work."
+			}
+		
+		}
+		
+		
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Object Creation Functions, Inheritance, Properties, Methods, and Instantation</h2>
+		<p>Let's create a party of adventurers to aid you in your quest! You can have up to four.</p>
+		<div id="memberInput">
+		<input type="text" id="name" placeholder="Name"></input><br>
+		<input type="text" id="gender" placeholder="Gender"></input><br>
+		<input type="text" id="class" placeholder="Class"></input><br>
+		<input type="text" id="personality" placeholder="Personality"></input><br>
+		<button onclick="addChar()" id="button1">Add Party Member</button></div><div id="outputDiv2"></div><br>
+		<div id="outputDiv4"></div>
+		
+		<div id="outputDiv"></div>
+		
+		<p>Oops! Let's not forget eye color! First, choose a member of your team, then enter their eye color and press the button. This will add the ".eyecolor" property.</p>
+		<input type="text" id="eyeColor" placeholder="Eye Color"></input><button onclick="eyeColor()">Set Eye Color</button>
+		
+		<p>Did you give everyone the right name? Go ahead and change their name if you like. Just select which party member first then enter their new name. After doing so, their profile should show their new name.</p>
+		<input type="text" id="newName" placeholder="Name"></input><button onclick="changeName()">Change Name</button>
+		<p>Ready for your adventure?</p>
+		<button onclick="onward()">Let's Go!</button>
+		<div id="outputDiv3"></div>
+
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>

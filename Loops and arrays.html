@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Submission Index</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		function forLoop(){
+			var text = "";
+			for (i = 0; i < 5; i++) { //for loop will add 1 to variable "i" until it reaches 5
+				var random = Math.floor((Math.random() * 50) + 1); //Random number generator
+				if (i == 4){ //if, else to add commas or not
+				text += random;
+				} else{
+				text += random + ", ";				
+				}
+				document.getElementById('outputDiv').innerHTML = text;//output to html body
+			}
+		}
+		
+		function whileLoop(){
+			var first = parseFloat(document.getElementById('first').value);
+			var last = parseFloat(document.getElementById('last').value);
+			var text = "";
+				while(first < last)
+					{
+						if (first + 2 >= last){
+							return;
+						} 
+						else {
+							first = first + 2;
+							text += first + " ";
+						}
+						document.getElementById('outputDiv2').innerHTML = text;//output to html body
+					}
+		}
+		
+		function whileDoLoop(){
+			var text = "";
+			var x = 0;
+			do{
+				text += x + " ";
+				x = x + 5;
+				document.getElementById('outputDiv3').innerHTML = text;//output to html body
+			} while (x<=50) //stops loop at 50
+		}
+		function teamColor(){
+			var name = document.getElementById('name').value;
+			var age = parseFloat(document.getElementById('age').value);
+			if (age <= 10){
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Blue Team!";
+			}else if (age > 10 && age <= 30) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Yellow Team!";
+			}else if (age > 30 && age <= 50) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Red Team!";
+			}else if (age > 50) {
+				document.getElementById('outputDiv4').innerHTML = name + ", you are on the Green Team!";
+			}
+		
+		}
+		function barrelSize(){
+			var gallons = parseFloat(document.getElementById('gallons').value);
+			var length = parseFloat(document.getElementById('length').value);
+			var radius = parseFloat(document.getElementById('radius').value);
+			var volume;
+			
+			volume = volumeParam(length, radius).toFixed(2);
+			var usGallons = convertToUsGallons(volume).toFixed(2);
+			
+			if (gallons > usGallons){
+				document.getElementById('outputDiv5').innerHTML = "The size of your barrel is: " + volume + " cubic inches <br/> This barrel will hold: " + usGallons + " US Gallons <br/> Your container will not hold the amount you want." ;
+			}else{
+				document.getElementById('outputDiv5').innerHTML = "The size of your barrel is: " + volume + " cubic inches <br/> This barrel will hold: " + usGallons + " US Gallons <br/> Your container will hold the amount you want!" ;
+			}
+		}
+		
+		function volumeParam(length, radius){
+			return Math.PI * Math.pow(radius, 2) * length;
+		}
+		function convertToUsGallons(volume){
+			return volume * 0.0043290;
+		}
+		
+		var array = new Array(); 
+			function insert(){
+				array.push(document.getElementById('newArray').value); // adding element to array
+				document.getElementById('newArray').value=''; // Empty the text box
+				document.getElementById('outputDiv9').innerHTML = array; // Output to HTML
+			}
+		
+			function reset(){
+				array = [];
+				document.getElementById('outputDiv9').innerHTML = array; // Output to HTML
+			}
+			
+			function multiply(){
+			var list = array.slice();
+			var multiplier = parseFloat(document.getElementById('multiplier').value);
+			var length = list.length - 1;
+				for (var i = 0;  i < list.length;  i++) {
+					list[i] = list[i] * multiplier;
+				}
+			document.getElementById('outputDiv6').innerHTML = list;
+			}
+		
+			function countEvens(){
+			var list = array.slice();
+			var evens = 0;
+			var length = list.length - 1;
+			for (var i = 0;  i < list.length;  i++) {
+				if (list[i] % 2 == 0){
+					evens = evens + 1; 
+				}
+			}
+			document.getElementById('outputDiv7').innerHTML = "There are " + evens + " even numbers in this array.";
+			}
+			
+			function zidane(){
+				var zidaneArray = {
+				"name":"Zidane Tribal",
+				"age":16,
+				"height":"173 cm",
+				"hair color":"blond",
+				"occupation":"thief",
+				}
+				document.getElementById('outputDiv8').innerHTML = zidaneArray[document.getElementById('zidane').value];
+			}
+		
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Loops:</h2>
+		<h3>for loop:</h3>
+		<button type="button" onclick="forLoop()">Press for Random Number Generator</button>
+		<br/><br/>
+		<div id="outputDiv"></div>
+		
+		<br/>
+
+		
+		<h3>while loop:</h3>
+		<p>Count by two's between the first and last number.<p>
+		<p>First Number: <input type="text" id="first"> Last Number: <input type="text" id="last"> </p>
+		<button type="button" onclick="whileLoop()">Start</button>
+		<div id="outputDiv2"></div>
+		
+		<br/>
+	
+		
+		<h3>while/do loop:</h3>
+		<p> Add by 5's until number 50 is reached <p>
+		<button type="button" onclick="whileDoLoop()">Start</button>
+		<div id="outputDiv3"></div>
+		
+		<br/>
+
+		
+		<h2>Conditional Statements:</h2>
+		<p>Enter your name and age and be assigned a color.</p>
+		<p>Name: <input type="text" id="name"> Age: <input type="text" id="age"> </p>
+		<button type="button" onclick="teamColor()">Get Team Color</button>
+		<div id="outputDiv4"></div>
+		
+		<br/>
+
+		
+		<h2>Functions with Parameters and Variables:</h2>
+		<p>Let's see if your barrel will hold an amount of gallons of water. Enter the amount of water in gallons, then the radius and length of your barrel.</p>
+		<p>Water in US Gallons: <input type="text" id="gallons"> Length of Barrel in inches: <input type="text" id="length"> <br/>Radius of Barrel in inches: <input type="text" id="radius"> </p>
+		<button type="button" onclick="barrelSize()">Calculate</button>
+		<div id="outputDiv5"></div>
+		
+		<br/>
+
+		
+		<h2>Arrays:</h2>
+		<p>Input a single number into the box and press "Add to Array" and repeat to create an array of any size. Use this array in the following functions to experiment with it.<p>
+		<input id="newArray" type="text" />
+		<input type="button" value="Add to Array" onclick="insert()" /><input type="button" value="Reset Array" onclick="reset()" />
+		<div id="outputDiv9"></div>
+		<h3>Multiply:</h3>
+		<p>Multiply Array by: <input type="text" id="multiplier" class="arrayBox"> <button type="button" onclick="multiply()">Multiply</button></p>
+		<div id="outputDiv6"></div>
+		
+		
+		<h3>Count:</h3>
+		<p>Count how many even numbers are in the list: <button type="button" onclick="countEvens()">Count Evens</button></p>
+		<div id="outputDiv7"></div>
+		
+
+		<h2>Associative Arrays:</h2>
+			<p>Meet Zidane. Learn more about him by typing in the box the following options:</p>
+			<ul>
+				<li>name</li>
+				<li>age</li>
+				<li>height</li>
+				<li>hair color</li>
+				<li>occupation</li>
+			</ul>
+		<input type="text" id="zidane"><input type="button" value="Submit" onclick="zidane()" />
+		<div id="outputDiv8"></div>
+
+		
+
+
+
+
+
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+		</div>
+		</body>
+</html>

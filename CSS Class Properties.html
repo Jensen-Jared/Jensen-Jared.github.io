@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - Manipulating CSS</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		function backgroundColor(color){
+		
+			document.body.style.background = color;
+		
+		}
+		
+		function fontStyle(style){
+			document.getElementById("font").style.fontStyle = style;
+		
+		}
+		function fontFamily(font){
+			document.getElementById("font").style.fontFamily = font;
+		
+		}
+		function fontWeight(weight){
+			document.getElementById("font").style.fontWeight = weight;
+		
+		}
+		
+		function newStyleDiv(){
+			var x = document.createElement("STYLE");
+			var y = document.createTextNode("#newDiv {background-color: red; color: white; font-weight: 60px; font-size: 40px; font-style: italic;}");
+		
+			x.appendChild(y);
+		
+			document.head.appendChild(x);
+		}
+		
+		function resetStyleDiv(){
+			var x = document.createElement("STYLE");
+			var y = document.createTextNode("#newDiv {background-color: initial; color: initial; font-weight: initial; font-size: initial; font-style: initial;}");
+		
+			x.appendChild(y);
+		
+			document.head.appendChild(x);
+		}
+		
+		function changeClass(){
+			document.styleSheets[0].addRule(".background", "font-size: 120%");
+			document.styleSheets[0].addRule(".background", "background-color: purple");
+			document.styleSheets[0].addRule(".background", "color: white");
+		}
+		
+		function resetClass(){
+			document.styleSheets[0].addRule(".background", "font-size: 100%");
+			document.styleSheets[0].addRule(".background", "background-color: white");
+			document.styleSheets[0].addRule(".background", "color: black");
+		}
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Manipulating CSS Class Properties Using JavaScript:</h2>
+		<p>Choose a background color!<p>
+		<button onclick="backgroundColor('green')">Green</button>
+		<button onclick="backgroundColor('blue')">Blue</button>
+		<button onclick="backgroundColor('red')">Red</button>
+		<button onclick="backgroundColor('#62a8ea')">Reset</button>
+		<p id="font">What should be the font style for this lovely text?</p>
+		<button onclick="fontWeight('900')">Bold</button>
+		<button onclick="fontStyle('oblique')">Oblique</button>
+		<button onclick="fontStyle('italic')">Italic</button>
+		<button onclick="fontFamily('Georgia, serif')">Georgia</button>
+		<button onclick="fontFamily('Comic Sans MS, cursive, sans-serif')">Comic Sans</button>
+		<button onclick="fontFamily('Arial, Helvetica, sans-serif'), fontStyle('initial'), fontWeight('initial')">Reset</button>
+		<p id="newDiv">Let's add a new style element and attach it to this paragraph!</p>
+		<button onclick="newStyleDiv()">Give it Some Style!</button>
+		<button onclick="resetStyleDiv()">No Style for You!</button>
+		<p>Lastly, let's alter the already existing class "background" being used to create the box and white background color these paragraphs are in.</p>
+		<button onclick="changeClass()">Alter "Background" CSS Class</button>
+		<button onclick="resetClass()">Reset "Background" CSS Class</button>
+
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+</body>
+
+</html>

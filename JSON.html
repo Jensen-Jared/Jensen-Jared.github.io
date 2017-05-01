@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - JSON Parse and Stringify</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		var list = new Array();
+		
+		
+		function addList(){
+		
+			list.push(document.getElementById('newArray').value);
+			
+			document.getElementById('newArray').value=''; 
+			document.getElementById('outputDiv').innerHTML = list;
+			
+			var string = JSON.stringify(list);
+			document.getElementById('outputDiv2').innerHTML = string;
+			
+			var object = JSON.parse(string);
+			var length = object.length;
+			var text = " ";
+			
+			for (i = 0; i < length; i++ ) {
+				text += object[i] + " ";
+				
+			
+			}
+			document.getElementById('outputDiv3').innerHTML = text;	
+		}
+		
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>JSON Parse and Stringify:</h2>
+		<p>Let's make a list of whatever you want. Then, we can stringify it to convert it to string, then use parse to make it usable in JavaScript again.</p>
+		<input type="text" id="newArray"></input>
+		<button onclick="addList()">Add to List</button><br>
+		<h3>Your list:</h3>
+		<div id="outputDiv"></div><br>
+		<h3>Stringify:</h3>
+		<div id="outputDiv2"></div><br>
+		<h3>Parse:</h3>
+		<div id="outputDiv3"></div>
+
+		
+
+
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>

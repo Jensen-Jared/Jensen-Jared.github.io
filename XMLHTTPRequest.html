@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - XMLHTTPRequest, AJAX</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var url = "https://api.nasa.gov/planetary/apod?api_key=SSIOuWA9xZI2gqj8b0lhuSHqgTdhri5bj5kFZeFs";
+		$.ajax({
+		url: url,
+		success: function(result){
+		if("copyright" in result) {
+			$("#copyright").text("Image Credits: " + result.copyright);
+		}
+		else {
+			$("#copyright").text("Image Credits: " + "Public Domain");
+  
+		if(result.media_type == "video") {
+			$("#apod_img_id").css("display", "none"); 
+			$("#apod_vid_id").attr("src", result.url);
+		}
+		else {
+			$("#apod_vid_id").css("display", "none"); 
+			$("#apod_img_id").attr("src", result.url);
+		}
+		$("#reqObject").text(url);
+		$("#returnObject").text(JSON.stringify(result, null, 4));  
+		$("#apod_explaination").text(result.explanation);
+		$("#apod_title").text(result.title);
+		}
+		});
+		
+		function getObject(){
+		
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange = function (){
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					var response = JSON.parse(this.responseText);
+					handleManualObjectResponse(response);
+				}
+			}
+			
+			var input = document.getElementById('objectInput').value;
+			
+			xmlhttp.open("GET", "/object_string/" + input + ".txt", true);
+			xmlhttp.send();
+		
+		
+		}
+		
+		function handleManualObjectResponse(response){
+		
+			var output = "";
+			
+			for (var i = 0; i < response.length; i++){
+				output += response[i] + "<br>";
+			}
+			
+			document.getElementById('objectOutput').innerHTML = output;
+		
+		}
+		function newText() {
+			var xhttp;
+			if (window.XMLHttpRequest) {
+				xhttp = new XMLHttpRequest();
+			} else {
+					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "/object_string/new-text.txt", true);
+			xhttp.send();
+		}
+		
+	
+		
+	</script>
+	
+</head>
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>Using XMLHTTPRequest to Consume a JSON Web Service (AJAX):</h2>
+		<h3>My Favorite Games:</h3>
+		<select id="objectInput">
+			<option value="kingdomHearts">Kingdom Hearts</option>
+			<option value="sonic">Sonic 3 and Knuckles</option>
+			<option value="starfox">Star Fox 64</option>
+			<option value="undertale">Undertale</option>
+			<option value="finalfantasy9">Final Fantasy IX</option>
+		</select>
+		<button type="button" onclick="getObject()">See Details</button>
+		<div id="objectOutput"></div>
+		
+		
+		<h3>A Secret Message:</h3>
+		<p id="demo">Press the button for a secret message using a seperate .txt file</p>
+		<button type="button" onclick="newText()">Change Content</button>
+		
+		<h3>NASA Api:</h3>
+  
+		<img id="apod_img_id" width="250px"/>
+		<p id="copyright"></p>
+		<h3 id="apod_title"></h3>
+		<p id="apod_explaination"></p>
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>

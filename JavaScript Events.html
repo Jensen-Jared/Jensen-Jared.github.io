@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - JavaScript Events with onTouchStart, onLoad, and etc.</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		function myFunction(){
+			document.getElementById('p1').innerHTML = "Wow! You are a brave soul!";
+		}
+		
+		function myFunction2(){
+			alert("The page hath loaded for your viewing pleasuere!");
+		}
+		
+		function myFunction3(element){
+			var random = Math.floor((Math.random() * 50) + 1);
+			if (random < 10){
+				var color = "red";
+			}
+			else if (random < 20){
+				var color = "green";
+			}
+			else if (random < 30){
+				var color = "pink";
+			}
+			else if (random < 40){
+				var color = "yellow";
+			}
+			else if (random < 50){
+				var color = "blue";
+			}
+			var element = document.getElementById(element);
+			
+			element.style.transition = "width 1s linear 0s, background 1s linear 0s";
+			element.style.background = color;
+		}
+		
+		function myFunction4(){
+			document.getElementById('p2').innerHTML = "Hooray! I'm green now!";
+		}
+		
+		function myFunction5(){
+			document.getElementById('p2').innerHTML = "Aww... Back to Black...";
+		}
+		
+		function myFunction6(element, color){
+			var element = document.getElementById(element);
+			
+			element.style.transition = "width 1s linear 0s, background 1s linear 0s";
+			element.style.background = color;
+		}
+		
+	</script>
+	
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: blue;
+		}
+		
+		#div2{
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+	</style>
+</head>
+
+<body onload="myFunction2()">
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>JavaScript Events such as onTouchStart, onLoad and etc.</h2>
+		<h3>onClick:</h3>
+		<button onclick="myFunction()">Click me! I dare you!</button>
+		<p id="p1"></p>
+		
+		<h3>onLoad:</h3>
+		<p>Hooray for pop-up alerts! I hope you got one for this page loading.</p>
+		
+		<h3>onKeyDown:</h3>
+		<p>Start typing and make the colors change!</p>
+		<input type="text" onkeydown="myFunction3('div1')">
+		<br><br>
+		<div id="div1"></div>
+		
+		<h3>onMouseOver</h3>
+		<p id='p2' onmouseover="style.color='green', myFunction4();" onmouseout="style.color='black', myFunction5()">Float over me with the mouse!</p>
+		
+		<h3>onTouchStart</h3>
+		<p>Touch the square to start the transition! It will turn greenwith a click of the mouse, or purple while using a touch screen!</p>
+		<div id="div2" onclick="myFunction6('div2', 'green')" onTouchStart="myFunction6('div2','purple')"></div>
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CIT 261 - HTML5 Tags, Video, Audio, and Canvas</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+	<h2>HTML5 Tags - Video, Audio, and Canvas</h2>
+		<h2>Recovery Chapter One Preview:</h2>
+		<h3>Trailer:</h3>
+		<video width="500px" height="350px" controls>
+			<source src="media/recovery-project-preview.mp4" type="video/mp4">
+			The browser you are using does not support this video tag
+		</video>
+		<h3>Original Soundtrack:</h3>
+		<p>Main theme by Joshua Dilworth:</p>
+		<audio controls>
+		<source src="media/main-theme.ogg" type="audio/ogg">
+		The browser you are using does not support this audio element.
+		</audio>
+
+		<p>Michele's Theme by Hyrum Barker:</p>
+		<audio controls>
+		<source src="media/michele-theme.ogg" type="audio/ogg">
+		The browser you are using does not support this audio element.
+		</audio>
+		
+		<p>Victory is Imminent (Battle Theme) by Joshua Dilworth:</p>
+		<audio controls>
+		<source src="media/victory-is-immenent.mp3" type="audio/mpeg">
+		The browser you are using does not support this audio element.
+		</audio>
+		
+		<p>Crystal Cavern by Joshua Dilworth:</p>
+		<audio controls>
+		<source src="media/crystal-cavern.mp3" type="audio/mpeg">
+		The browser you are using does not support this audio element.
+		</audio>
+		
+		<p>Dark Forest by Hyrum Barker:</p>
+		<audio controls>
+		<source src="media/dark-forest.mp3" type="audio/mpeg">
+		The browser you are using does not support this audio element.
+		</audio>
+		
+		<p>Haunted Fortress by Joshua Dilworth:</p>
+		<audio controls>
+		<source src="media/haunted-fortress.mp3" type="audio/mpeg">
+		The browser you are using does not support this audio element.
+		</audio>
+		
+		<p>Desert Fury by Joshua Dilworth:</p>
+		<audio controls>
+		<source src="media/desert-fury.mp3" type="audio/mpeg">
+		The browser you are using does not support this audio element.
+		</audio>
+		<h3>Characters:</h3>
+		<button onclick="charImage(1)">Michele</button>
+		<button onclick="charImage(2)">Zephin</button>
+		<button onclick="charImage(3)">Ryan</button>
+		<button onclick="charImage(4)">Tamra</button>
+		<button onclick="charImage(5)">Jeane</button>
+		<button onclick="charImage(6)">Seth</button>
+		<br>
+		<canvas id="characters" width="272" height="288"
+		style="border:1px solid #d3d3d3;">
+		Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<div style="display:none;">
+			<img id="source1" src="media/michele.png"
+			width="272" height="288">
+			<img id="sprite1" src="media/michele-sprite.png"
+			width="272" height="288">
+			<img id="source2" src="media/zephin.png"
+			width="272" height="288">
+			<img id="sprite2" src="media/zephin-sprite.png"
+			width="272" height="288">
+			<img id="source3" src="media/ryan.png"
+			width="272" height="288">
+			<img id="sprite3" src="media/ryan-sprite.png"
+			width="272" height="288">
+			<img id="source4" src="media/tamra.png"
+			width="272" height="288">
+			<img id="sprite4" src="media/tamra-sprite.png"
+			width="272" height="288">
+			<img id="source5" src="media/jeane.png"
+			width="272" height="288">
+			<img id="sprite5" src="media/jeane-sprite.png"
+			width="272" height="288">
+			<img id="source6" src="media/seth.png"
+			width="272" height="288">
+			<img id="sprite6" src="media/seth-sprite.png"
+			width="272" height="288">
+		</div>
+		<br>
+		<p>Enter your name for a custom message:</p>
+		<input type="text" id="name" onkeyup="setName()" placeholder="Your Name"></input><br>
+		<canvas id="myCanvas" width="900" height="90px"
+		style="border:2px solid #000000;">
+		Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<br>
+		
+		<script type="text/javascript">
+			function setName(){
+				var name = document.getElementById('name').value;
+				thankYou(name);
+			}
+			function charImage(number) { 
+				
+				var canvas = document.getElementById('characters');
+				var ctx2 = canvas.getContext('2d');
+				var image = document.getElementById('source' + number);
+				var sprite = document.getElementById('sprite' + number);
+				ctx2.clearRect(0,0,canvas.width, canvas.height);
+				ctx2.drawImage(image, 0, 0);
+				ctx2.drawImage(sprite, 180, 0);
+			
+			}
+			function thankYou(name){
+				var name = document.getElementById('name').value;
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				ctx.font = "30px Arial";
+				var grd = ctx.createRadialGradient(195,20,50,100,60,300);
+				grd.addColorStop(0,"aquamarine");
+				grd.addColorStop(1,"white");
+				
+				ctx.fillStyle = grd;
+				ctx.fillRect(0,0,900,90);
+				ctx.fillStyle = "black";
+				ctx.fillText("Thank You for Visiting, " + name +"!",10,60);
+			}
+			
+			
+			
+			
+	</script>
+		
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	
+	</body>
+</html>

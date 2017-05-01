@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CIT 261 - DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc.</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen">	
+	
+	<script type="text/javascript">
+		function left(){
+		
+		document.getElementById('outputDiv').innerHTML = "Oh no! You run into a verocious giant python!";
+		
+		var btn = document.createElement("BUTTON");
+		var t = document.createTextNode("Fight!");
+		btn.appendChild(t);
+		btn.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "You face the ferocious serpent! However, you were vastly underprepared and brought no weapons! The snake eats you whole and you now live in your new snake home.";
+				});
+		
+		var btn2 = document.createElement("BUTTON");
+		var t = document.createTextNode("Run Away!");
+		btn2.appendChild(t);
+		btn2.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "You safely retreat! You live for another day!";
+				});
+		
+		document.getElementById('test').appendChild(btn); 
+		document.getElementById('test').appendChild(btn2);		
+		}
+		
+		function right(){
+		
+		document.getElementById('outputDiv').innerHTML = "You find a magnificant treasure chest! Do you open it or leave it alone?";
+		
+		var btn = document.createElement("BUTTON");
+		var t = document.createTextNode("Open");
+		btn.appendChild(t);
+		btn.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "The chest was trapped and releases a deadly poison! It did however have gold and magnificant treasue... You die slowly alongside your new loot.";
+				});
+		
+		var btn2 = document.createElement("BUTTON");
+		var t = document.createTextNode("Leave It");
+		btn2.appendChild(t);
+		btn2.addEventListener ("click", function() {
+				document.getElementById('outputDiv').innerHTML = "That treasure chest was pretty suspicious... better leave it for another adventurer and make your fortune the honest way by shoveling horse manure.";
+				});
+		
+		
+		document.getElementById('test').appendChild(btn); 
+		document.getElementById('test').appendChild(btn2);		
+		}
+		
+		function start(){
+			document.getElementById('outputDiv2').innerHTML = "Start shopping!";
+		
+			var btn5 = document.createElement("BUTTON");
+			var t = document.createTextNode("Add Carrots");
+			btn5.appendChild(t);
+			btn5.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Carrots");
+					newItem.appendChild(textnode);
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+			var btn6 = document.createElement("input");
+			btn6.type = "button";
+			btn6.value = "Add Milk";
+			btn6.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Milk");
+					newItem.appendChild(textnode);
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+			var btn7 = document.createElement("input");
+			btn7.type = "button";
+			btn7.value = "Add Playstation 4";
+			btn7.addEventListener ("click", function() {
+					var newItem = document.createElement("LI");
+					var textnode = document.createTextNode("Playstation 4");
+					newItem.appendChild(textnode);
+					var list = document.getElementById("shoppingList");
+					list.insertBefore(newItem, list.childNodes[0]);
+					});
+					
+			var btn8 = document.createElement("input");
+			btn8.type = "button";
+			btn8.value = "Remove Last Item Added";
+			btn8.addEventListener ("click", function() {
+					var list = document.getElementById("shoppingList");
+					list.removeChild(list.childNodes[0]);
+					});
+			document.getElementById('test2').appendChild(btn5);
+			document.getElementById('test2').appendChild(btn6);
+			document.getElementById('test2').appendChild(btn7);
+			document.getElementById('test2').appendChild(btn8);
+		}		
+			
+	</script>
+	
+</head>
+
+<body>
+	<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	</header>
+	<div class="background">
+		<h2>DOM createElement, appendChild, insertBefore, removeChild:</h2>
+		<h3>createElement and appendChild:</h3>
+		<div id="outputDiv">
+		<p>Choose your own adventure! Would you like to go left or right?<p>
+		<input type="button" value="Left" onclick="left()" />
+		<button onclick="right()">Right</button>
+		
+		</div>
+		<div id="test"></div>
+		<h3>insertBefore and removeChild</h3>
+		<div id="outputDiv2">
+		<p>Grocery Shopping time!<p>
+		<button onclick="start()">Start</button>
+		</div>
+		<div id="test2"></div>
+		<br/>
+		<ul id="shoppingList">
+	
+		</ul>
+		
+	<footer>
+		<p>Copyright 2017 - J.D. Jensen</p>
+	<footer>
+	</div>
+	</body>
+</html>
