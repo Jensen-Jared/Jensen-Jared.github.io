@@ -123,15 +123,15 @@
 			document.getElementById('outputDiv7').innerHTML = "There are " + evens + " even numbers in this array.";
 			}
 			
-			function zidane(){
-				var zidaneArray = {
-				"name":"Zidane Tribal",
-				"age":16,
+			function percy(){
+				var percyArray = {
+				"name":"Percy Lupine",
+				"age":23,
 				"height":"173 cm",
-				"hair color":"blond",
+				"hair color":"strawberry blond",
 				"occupation":"thief",
 				}
-				document.getElementById('outputDiv8').innerHTML = zidaneArray[document.getElementById('zidane').value];
+				document.getElementById('outputDiv8').innerHTML = percyArray[document.getElementById('percy').value];
 			}
 		
 	</script>
@@ -173,7 +173,7 @@
 
 		
 		<h2>Conditional Statements:</h2>
-		<p>Enter your name and age and be assigned a color.</p>
+		<p>Enter your name and age and be assigned a team.</p>
 		<p>Name: <input type="text" id="name"> Age: <input type="text" id="age"> </p>
 		<button type="button" onclick="teamColor()">Get Team Color</button>
 		<div id="outputDiv4"></div>
@@ -206,7 +206,7 @@
 		
 
 		<h2>Associative Arrays:</h2>
-			<p>Meet Zidane. Learn more about him by typing in the box the following options:</p>
+			<p>Meet Percy. Learn more about him by typing in the box the following options:</p>
 			<ul>
 				<li>name</li>
 				<li>age</li>
@@ -214,7 +214,7 @@
 				<li>hair color</li>
 				<li>occupation</li>
 			</ul>
-		<input type="text" id="zidane"><input type="button" value="Submit" onclick="zidane()" />
+		<input type="text" id="percy"><input type="button" value="Submit" onclick="percy()" />
 		<div id="outputDiv8"></div>
 
 		
