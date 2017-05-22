@@ -21,17 +21,7 @@
 			element.style.background = color;
 		}
 		
-		function myFunction3(number){
 		
-			if(number == 1){
-			document.styleSheets[0].addRule("#divAnimation", "animation-iteration-count: infinite;");
-			document.styleSheets[0].addRule("#divAnimation", "-webkit-animation-iteration-count: infinite;");
-			}
-			else{
-			document.styleSheets[0].addRule("#divAnimation", "animation-iteration-count: 0;");
-			document.styleSheets[0].addRule("#divAnimation", "-webkit-animation-iteration-count: 0;");
-			}
-			}
 			
 		function myFunction(){
 			var x = document.createElement('div');
@@ -78,13 +68,7 @@
 		<h3>onMouseOver and onMouseOut</h3>
 		<div id="div3" onmouseover="myFunction2('div3', '200px', '200px', 'aquamarine')" onmouseout="myFunction2('div3', '100px', '100px', 'pink')"></div>
 		
-		<h3>Animation Automatic:</h3>
-		<button onclick='myFunction3("1")'>Start</button><button onclick='myFunction3("2")'>Stop</button>
-		<div id="divAnimation"></div>
 		
-		<h3>Create Animation:</h3>
-		<p id="goHere">Create a new element that will be animated using CSS:</p>
-		<button onclick='myFunction()' id="beGone">Create</button>
 		
 	<footer>
 		<p>Copyright 2017 - J.D. Jensen</p>

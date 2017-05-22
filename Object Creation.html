@@ -145,9 +145,9 @@
 		
 		function onward() {
 			if (totalMembers < 4){
-				document.getElementById('outputDiv3').innerHTML = "You need to create four party members to start the adventure.";
+				document.getElementById('outputDiv3').innerHTML = "The map requires four party members to start the adventure or face certain death! You do want to avoid catastrophe, don't you?";
 			}else{
-				document.getElementById('outputDiv3').innerHTML = "Your team comes across a horrible beast! Everyone was eaten alive. Too bad. Guess putting together a team wasn't worth all the work."
+				document.getElementById('outputDiv3').innerHTML = "Your humble band starts their exploits by renting a boat and crossing the Strait of Messina. Suddenly the horrible sea monster Charybdis bursts from the depths! It's tentacles writhe and pummel and wrest each of your companions from their post and toss them unceremoniously into it's gaping maw. While the abhorrent behemoth masticates disgustingly on your unlucky allies, you take the opportunity to retreat, maneuvering your vessel as far away from the hideous scene as you can. You are so distracted by your flight, that you don't even notice the second sea monster, Scylla, awaiting your arrival and you only have a second of realization and regret as she swallows you whole. Too bad. Guess all the work you did building your group was just a waste of time."
 			}
 		
 		}
@@ -166,7 +166,7 @@
 	</header>
 	<div class="background">
 		<h2>Object Creation Functions, Inheritance, Properties, Methods, and Instantation</h2>
-		<p>Let's create a party of adventurers to aid you in your quest! You can have up to four.</p>
+		<p>It was early summer when you came upon the map. You have always craved adventure and here is your chance to have one. The perils will be real, but the promised fortune is vast if your undertaking is fortuitous. You must assemble a party of adventurers to aid you in your quest. The map says that at least four are required to avoid certain doom. Enter the information for each party member, one at a time:</p>
 		<div id="memberInput">
 		<input type="text" id="name" placeholder="Name"></input><br>
 		<input type="text" id="gender" placeholder="Gender"></input><br>
@@ -177,13 +177,13 @@
 		
 		<div id="outputDiv"></div>
 		
-		<p>Oops! Let's not forget eye color! First, choose a member of your team, then enter their eye color and press the button. This will add the ".eyecolor" property.</p>
+		<p>What's this? There is a message hidden on the map's border. It says the eye color of each member of your group is of the utmost importance. Thank goodness you caught that! To depart without this crucial information would surely bring calamity. First, choose a member of your team using the buttons above, then enter their eye color below and press the button. This will add the ".eyecolor" property.</p>
 		<input type="text" id="eyeColor" placeholder="Eye Color"></input><button onclick="eyeColor()">Set Eye Color</button>
 		
-		<p>Did you give everyone the right name? Go ahead and change their name if you like. Just select which party member first then enter their new name. After doing so, their profile should show their new name.</p>
+		<p>One final check before we start our quest. The map is adamant that the nomenclature be correct for the travellers chosen. Did you give everyone the right name? This is your last chance to change their name if you like. I assure you that not taking these instructions seriously will bring tragedy upon your little band. Just select which party member using the buttons above and then enter their new name in the space below. Press the button after doing so, and their profile should show their new name.</p>
 		<input type="text" id="newName" placeholder="Name"></input><button onclick="changeName()">Change Name</button>
-		<p>Ready for your adventure?</p>
-		<button onclick="onward()">Let's Go!</button>
+		<p>With all the details properly in order, you should be ready for your adventure. When you have mustered up the courage, press onward!</p>
+		<button onclick="onward()">Depart!</button>
 		<div id="outputDiv3"></div>
 
 	<footer>
