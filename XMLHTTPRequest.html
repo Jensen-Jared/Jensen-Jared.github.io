@@ -52,7 +52,7 @@
 			
 			var input = document.getElementById('objectInput').value;
 			
-			xmlhttp.open("GET", "/object_string/" + input + ".txt", true);
+			xmlhttp.open("GET", "/" + input + ".txt", true);
 			xmlhttp.send();
 		
 		
@@ -81,7 +81,7 @@
 				document.getElementById("demo").innerHTML = this.responseText;
 				}
 			};
-			xhttp.open("GET", "/object_string/new-text.txt", true);
+			xhttp.open("GET", "/new-text.txt", true);
 			xhttp.send();
 		}
 		
