@@ -1,72 +1,28 @@
-<!DOCTYPE html>
-<!--
-This page will tell people about our company
--->
+<!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link href="/css/styleguide.css" type="text/css" rel="stylesheet" />
-        <link href="/css/normalize.css" type="text/css" rel="stylesheet" media="screen"/>
-        <meta	name="viewport"	content="width=device-width,	
-iniHal-scale=1.0, maximum-scale=1.0">
-    </head>
-    <body>
-        
-        <header>
-             <img src="/images/design4.png" 
-                alt="FoneFlava" title="This is the FoneFlava Logo"
-                width="100" height="100" /><br>
-            <nav>
-            <a href="/index.html">| Home |</a>
-            <a href="homepage.html">| CIT 261 Examples |</a>
-            </nav>
-        </header>
-       <br>
- 	<h2>Using XMLHTTP Request to Consume a JSON Web Service (AJAX):</h2><br>
- 
- <h3>Here are some things about me!</h3>
- <select id="infoInput">
- 	<option value="favorite_movie">My Favorite Movie</option>
- 	<option value="most_recent_book">Most Recent Book I Read</option>
- 	<option value="most_recent_movie">My Recent Movie I Watched</option>
- 	</select>
- 	<button onclick="getInfo()"> See the results </button><br><br>
- 	<div id="infoOutput"></div><br>
- 
- 
- <script>
- function getInfo(){
-	var xmlhttp = new XMLHttpRequest();
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CIT 261 - XMLHTTPRequest, AJAX</title>
+<link href='//fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+	<link href='//fonts.googleapis.com/css?family=BioRhyme' rel='stylesheet'>
+<style>
+	h1 {font-family: 'Quicksand';}
+	h2 {font-family: 'Quicksand';}
+	body {font-family: 'BioRhyme';}
+</style>
+</head>
+<body>
+<header>
+	<a href="main.html">
+		<h1>CIT 261 - J.D. Jensen</h1>
+		<h2>Application Development</h2>
+	</a>
+	<button id="btn">Fetch Info for 3 New Animals</button>
+	</header>
 	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			var response = JSON.parse(this.responseText);
-			handleResponse(response);
-			
-			}
-		}
-	var input = document.getElementById('infoInput').value;
+	<div id="animal-info"></div>
 	
-	xmlhttp.open("GET", "ajax_info/" + input + ".txt", true);
-	
-	xmlhttp.send();
-	
-}
-function handleResponse(response) {
-	var output = "";
-	
-	for (var i = 0; i < response.length; i++){
-			output += response[i] + "<br>";
-		}
-		
-		document.getElementById('infoOutput').innerHTML = output;
-	
-}
-</script>
-        
-        <footer role="contentinfo">
-            <a href="/index.html">| Home |</a>
-            <a href="homepage.html">| CIT 261 Examples |</a>
-        </footer>
-    </body>
+	<script src="/main.js"></script>
+	</body>
 </html>
