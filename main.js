@@ -7,10 +7,19 @@ btn.addEventListener("click", function() {
 	var myRequest = new XMLHttpRequest();
 	myRequest.open('GET', '/info-' + pageCounter + '.json');
 	myRequest.onload = function() {
+		if (myRequest.status >= 200 && myRequest.status <400){
 		var myData = JSON.parse(myRequest.responseText);
 		renderHTML(myData);
+		} else {
+			console.log("We connected to the server, but it returned an error.");
+		}
 };
-myRequest.send();
+
+	myRequest.onerror = function() {
+		console.log("Connection error");
+	};
+	
+	myRequest.send();
 	pageCounter++;
 	if (pageCounter > 3) {
 		btn.classList.add("hide-me");
