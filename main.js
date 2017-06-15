@@ -1,6 +1,6 @@
 var pageCounter = 1;
 var animalContainer = document.getElementById("animal-info");
-var btn = document.getElementById("btn");
+var btn = document.getElementById("myBtn");
 
 btn.addEventListener("click", function() {
 	var myRequest = new XMLHttpRequest();
