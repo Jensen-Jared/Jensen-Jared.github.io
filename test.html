@@ -18,7 +18,7 @@ var animalContainer = document.getElementById("animal-info");
 function myFunction() {
 	var myRequest = new XMLHttpRequest();
 	myRequest.open('GET', '/info-' + pageCounter + '.json');
-	myRequest.onload = function() {
+	myRequest.onload = myFunction() {
 		if (myRequest.status >= 200 && myRequest.status <400){
 		var myData = JSON.parse(myRequest.responseText);
 		renderHTML(myData);
