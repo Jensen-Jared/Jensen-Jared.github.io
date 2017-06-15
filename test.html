@@ -15,9 +15,9 @@
 	<script>
 	var pageCounter = 1;
 var animalContainer = document.getElementById("animal-info");
-var btn = document.getElementById("btn");
+var myBtn = document.getElementById("btn");
 
-btn.addEventListener("click", myFunction); 
+myBtn.addEventListener("click", myFunction); 
 
 function myFunction() {
 	var myRequest = new XMLHttpRequest();
@@ -31,9 +31,9 @@ function myFunction() {
 		}
 };
 
-	/*myRequest.onerror = myFunction() {
+	myRequest.onerror = function() {
 		console.log("Connection error");
-	};*/
+	};
 	
 	myRequest.send();
 	pageCounter++;
