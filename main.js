@@ -1,11 +1,10 @@
-// JavaScript Document
 var pageCounter = 1;
 var animalContainer = document.getElementById("animal-info");
 var btn = document.getElementById("btn");
 
 btn.addEventListener("click", function() {
 	var myRequest = new XMLHttpRequest();
-	myRequest.open('GET', '/info-' + pageCounter + '.json');
+	myRequest.open('GET', 'https://jensen-jared.github.io/info-' + pageCounter + '.json');
 	myRequest.onload = function() {
 		if (myRequest.status >= 200 && myRequest.status <400){
 		var myData = JSON.parse(myRequest.responseText);
