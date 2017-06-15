@@ -2,7 +2,9 @@ var pageCounter = 1;
 var animalContainer = document.getElementById("animal-info");
 var btn = document.getElementById("myBtn");
 
-btn.addEventListener("click", function() {
+btn.addEventListener("click", myFunction); 
+
+function myFunction() {
 	var myRequest = new XMLHttpRequest();
 	myRequest.open('GET', 'https://jensen-jared.github.io/info-' + pageCounter + '.json');
 	myRequest.onload = function() {
@@ -23,7 +25,7 @@ btn.addEventListener("click", function() {
 	if (pageCounter > 3) {
 		btn.classList.add("hide-me");
 	}
-});
+}
 
 function renderHTML(data) {
 	var htmlString = "";
