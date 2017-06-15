@@ -96,16 +96,21 @@
 
 <script>
 function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(43.818380, -111.784241),
-    zoom:5,
-};
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  var mapCanvas = document.getElementById("map");
+  var myCenter = new google.maps.LatLng(43.818380,-111.784241); 
+  var mapOptions = {center: myCenter, zoom: 5};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+	icon: student.png,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker.setMap(map);
 }
 </script>
 	<footer>
-		<p>Copyright 2017 - J.D. Jensen</p>
-		</footer>
+	  <p>Copyright 2017 - J.D. Jensen</p>
+	  </footer>
 	</div>
 	
 	</body>
