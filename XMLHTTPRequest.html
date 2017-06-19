@@ -99,15 +99,16 @@
 		
 		<h3>Google Maps Api:</h3>
   
-		<div id="map" style="width:60%;height:350px"></div>
+		<div id="map" style="width:50%;height:350px"></div>
 <script>
 function initMap() {
   var mapCanvas = document.getElementById("map");
   var myCenter = new google.maps.LatLng(43.818380,-111.784241); 
-  var mapOptions = {center: myCenter, zoom: 15};
+  var mapOptions = {center: myCenter, zoom: 17};
   var map = new google.maps.Map(mapCanvas,mapOptions);
   var marker = new google.maps.Marker({
     position: myCenter,
+	icon: "/student.png"
     animation: google.maps.Animation.BOUNCE
   });
   marker.setMap(map);
