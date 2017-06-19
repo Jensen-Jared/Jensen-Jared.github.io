@@ -99,7 +99,7 @@
 		
 		<h3>Google Maps Api:</h3>
   
-		<div id="map" style="width:50%;height:250px"></div>
+		<div id="map" style="width:60%;height:350px"></div>
 <script>
 function initMap() {
   var mapCanvas = document.getElementById("map");
@@ -108,7 +108,6 @@ function initMap() {
   var map = new google.maps.Map(mapCanvas,mapOptions);
   var marker = new google.maps.Marker({
     position: myCenter,
-	icon: student.png,
     animation: google.maps.Animation.BOUNCE
   });
   marker.setMap(map);
