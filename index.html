@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Nerd Herd Calculator</title>
+
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <!-- CSS
+        ================================================== -->
+        <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="css/main.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="css/animations.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="css/print-calculator.css" type="text/css" rel="stylesheet" media="print" />
+        <link href="css/layout.css" type="text/css" rel="stylesheet" media="screen" />
+
+        <!-- Favicons
+        ================================================== -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        
+    </head>
+    <body>
+        <div id="top-header">
+            Loan Calculator
+        </div>
+        <section id="main" class="container">
+            <div class="row">
+                <form id="loans" name="loan-calc">
+                    <fieldset>
+                        <div class="col-md-6">
+                            <!-- scenario name -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="scenario-name" id="scenario-name-label">Scenario Name</label>
+                                    <input class="field" type="text" id="scenario-name" placeholder="Scenario Name"  size="15">
+                                <div class="error"></div>
+                            </div>
+                            <!-- loan type -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="loan-type" id="loan-type-label">Loan Type</label>
+                                    <select name="loan-type" id="loan-type" class="field" autofocus>
+                                        <option value="car">Car</option>
+                                        <option value="home">Home</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                <div class="error"></div>
+                            </div>
+                            <!-- loan amount -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="principal" id="principal-label">Loan Amount</label>
+                                    <input class="field required number" type="text" id="principal" placeholder="Loan Amount"> 
+                                <div class="error"></div>
+                            </div>
+                            <!-- interest rate -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="rate" id="rate-label">Rate</label>
+                                    <input class="field required number" type="text" id="rate" placeholder="Rate">
+                                <div class="error"></div>
+                            </div>
+                            <!-- periods/term -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="periods" id="periods-label">Periods</label>
+                                    <input class="field required number" type="text" id="periods" placeholder="Term">
+                                <div class="error"></div>
+                            </div>
+                            <!-- period type -->
+                            <div class="input-group">
+                                <label for="period-type" id="for-label" class="fieldlabel">for</label>
+                                    <select name="period-id" id="period-type" class="field">
+                                        <option value="mo">Month</option>
+                                        <option value="qtr">Quarter</option>
+                                        <option value="yr">Year</option>
+                                    </select>
+                                <div class="error"></div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <!-- payment label -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="payment" id="payment-label">Payment</label>
+                                    <input class="field required number" type="text" id="payment" placeholder="Payment">
+                                <div class="error"></div>
+                            </div>
+                            <!-- total loan -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="total" id="total-label">Total</label>
+                                    <input class="field" type="text" id="total" size="15" disabled value="0.00"><br/>
+                                <div class="error"></div>
+                            </div>
+                            <!-- total interest -->
+                            <div class="input-group">
+                                <label class="fieldlabel" for="interest-total" id="interest-total-label">Total Interest</label>
+                                    <input class="field" type="text" id="interest-total" size="15" disabled value="0.00">
+                                <div class="error"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-12 action-buttons">
+                    <button id="goButton" class="rnd-btn" title="Calculate Loan">Go</button>
+                    <button id="newButton" class="rnd-btn" title="Clear">New</button>
+                    <button id="saveButton" class="rnd-btn" title="Save Scenario">Save</button>
+                    <button id="deleteButton" class="rnd-btn" title="Delete Scenario">Delete</button>
+                    <button id="open-load-screen" data-toggle="modal" data-target="#load-screen" type="button" class="rnd-btn">Scenario List</button>
+                    <button id="amortButton" class="rnd-btn hide-me" title="Show Amortization Schedule">Amortize</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- This section is for the what-if scenario buttons -->
+        
+        <div class="modal fade" id="load-screen" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="load-screenLabel">
+                    Saved Scenarios
+                  </h4>
+              </div>
+              <div class="modal-body">
+
+                    <div id="scenario-list" class="">
+                        <!-- Reference Item 
+                        <section class="scenario-item grLtBlu">
+                            <img src="images/icons/cash.png" >
+                            <div class="title">Computer Loan</div>
+                            Other / $3,000.00 / 4.36%
+                            <div class="btn-panel">
+                                <button type="button" class="btn btn-danger delete-scenario">Delete</button>
+                                <button type="button" class="btn btn-primary">Load</button>
+                            </div>
+                        </section>
+                        -->
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="close-modal" class="btn btn-default" data-dismiss="modal">Cancel</button>
+<!--                <button type="button" id="btn-add-scenario" class="btn btn-primary" >Add Item</button>-->
+              </div>
+            </div>
+          </div>
+        </div>        
+        <!--  Amortization schedule section -->
+        <section id="amortization-container" class="hide-me">
+            <button id="amort-cancel" class="rnd-btn cancel-btn">Cancel</button>
+            <span>Loan Amount:</span>
+            <span id="loan-amt"></span>
+            <table>
+                <thead>
+                <tr>
+                    <td>Payment<br/>Number</td>
+                    <td>Payment</td>
+                    <td>Interest</td>
+                    <td>Principal</td>
+                    <td>Balance</td>
+                </tr>
+                </thead>
+                <tbody id="amortize-table"></tbody>
+            </table>
+        </section>
+
+        <div id="test-nav" class="no-print">
+            <div id="show-btn">Testing Tools</div>
+                <h4>Testing Tools</h4>
+                <div class="attribute-group">
+                    <h4>Message Testing</h4>
+                    <button type="button" onclick='createMessage(guid(), 1)'>Info Test Messages</button>
+                    <button type="button" onclick='createMessage(guid(), 2)'>Warning Test Messages</button>
+                    <button type="button" onclick='createMessage(guid() + guid() + guid() + guid(), 3)'>Error Test Messages</button>
+                </div>
+                <div class="attribute-group">
+                    <h4>Scenario Testing</h4>
+                    <button id="tst-open-load-screen" data-toggle="modal" data-target="#load-screen" type="button">Load Scenario</button>
+                </div>
+                <div class="attribute-group">
+                    <h4>Error Message Testing</h4>
+                    <button type="button" onclick="showHideError('scenario-name', document.getElementById('msg-tst-value').value);">Show/Hide Scenario Error</button>
+                    <button type="button" onclick="showHideError('loan-type', document.getElementById('msg-tst-value').value);">Show/Hide Loan type Error</button>
+                    <button type="button" onclick="showHideError('principal', document.getElementById('msg-tst-value').value);">Show/Hide principal Error</button>
+                    <button type="button" onclick="showHideError('rate', document.getElementById('msg-tst-value').value);">Show/Hide rate Error</button>
+                    <button type="button" onclick="showHideError('periods', document.getElementById('msg-tst-value').value);">Show/Hide Periods Error</button>
+                    <button type="button" onclick="showHideError('payment', document.getElementById('msg-tst-value').value);">Show/Hide payment Error</button>
+                    <button type="button" onclick="showHideError('total', document.getElementById('msg-tst-value').value);">Show/Hide total Error</button>
+                    <button type="button" onclick="showHideError('interest-total', document.getElementById('msg-tst-value').value);">Show/Hide total interest Error</button>
+                    <textarea id="msg-tst-value">Here is my special message</textarea>
+                    <button type="button" onclick="hideAllErrors();">Hide All Errors</button>
+                    
+                </div>
+        </div>
+
+        <div id="msg-area">
+        </div>
+
+        <!-- JavaScript
+        ================================================== -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/file-io.js" type="text/javascript"></script>
+        <script src="js/calculate.js" type="text/javascript"></script>
+        <script src="js/validateinputs.js" type="text/javascript"></script>
+        <script src="js/layout.js" type="text/javascript"></script>
+        <script src="js/amortize.js" type="text/javascript"></script>
+        <script src="js/utils.js" type="text/javascript"></script>
+        <script src="js/worker-thread.js" type="text/javascript"></script>
+        
+    </body>
+</html>
