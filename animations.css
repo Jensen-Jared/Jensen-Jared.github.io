@@ -58,11 +58,6 @@
     -webkit-animation: slidein .4s;
 }
 
-.rnd-btn:hover{
-    background-color: deepskyblue;
-	color: white;
-}
-
 @-webkit-keyframes slidein {
   from {
     margin-left: 100%;
