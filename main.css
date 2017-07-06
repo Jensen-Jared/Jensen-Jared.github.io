@@ -15,7 +15,9 @@
 }
 
 .rnd-btn:hover{
-    opacity: 1.8;
+    background-color: deepskyblue;
+	color: white;
+	opacity: 1.8;
     -moz-opacity: 1.8;
     cursor: pointer;
 }
