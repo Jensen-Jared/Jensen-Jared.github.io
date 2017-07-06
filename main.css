@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* CSS Document */
+.field{
+    line-height: 1.2em;
+    color: black;
+    margin: 0 0 .5em 0;
+}
+
+.rnd-btn{
+    /* height: 2.2em!important; */
+    width: 8em!important;
+    border-radius: 5px;
+/*    box-shadow: 3px 3px 9px darkgrey;*/
+    margin: 2px 0 0 1em;
+}
+
+.rnd-btn:hover{
+    opacity: 1.8;
+    -moz-opacity: 1.8;
+    cursor: pointer;
+}
+
+.inError{
+    background-color: red !important; 
+    animation: pulsate 1.3s;
+    -webkit-animation: pulsate 1.3s;
+    -webkit-animation-iteration-count: 2;
+}
+
+@keyframes pulsate{
+    from {background: white;}
+    to {background: red;}
+}
+
+@-webkit-keyframes pulsate {
+    from {background:white;}
+    to {background:red;}
+}
+
+
+.green {
+    background: green;
+}
+
+.hide-me{
+    display: none;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape){
+}
+
+/*  tablet portrait mode  for handheld devices*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait){
+}
+
+#amortization-container{
+    position: absolute;
+    top: 0px;
+    background-color: white;
+    min-height: 100%;
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    clear: left;
+    z-index: 1000;
+}
+
+table{
+    margin-top: 10px;
+    margin-left: .2em;
+}
+
+table, th, td, thead, tbody
+{
+    border:1px solid black;
+}
+
+thead{
+    background-color: aliceblue;
+}
+
+thead tr td{
+    text-align: center;
+}
+
+td{
+    width: 7em;
+}
+
+.data-row{
+    text-align: right;
+}

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* CSS Document */
+#amortization-container{
+    top: 0;
+    left: 0;
+}
+
+#load-screen, #amort-cancel, #amortButton, #deleteButton, #open-load-screen, #newButton, #saveButton, #goButton
+{
+    visibility: hidden;
+    display: none;
+}
+label.fieldlabel{
+    /*text-align: right;*/
+    display: block;
+    width: 8em;
+    line-height: 1.2em;
+    float: left;
+    clear: left;
+    margin: 0 3px .5em 0;
+    color: black;
+    overflow: auto;
+}
+.field{
+    line-height: 1.2em;
+    color: black;
+    margin: 0 0 .5em 0;
+}
+
+table, th, td, thead, tbody
+{
+    border:1px solid black;
+}
+
+thead{
+    background-color: aliceblue;
+}
+
+thead tr td{
+    text-align: center;
+}
+
+td{
+    width: 7em;
+}
+
+.data-row{
+    text-align: right;
+}
+
+.no-print {
+    display: none;
+}
