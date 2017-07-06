@@ -11,23 +11,23 @@
     border: none;
     color: white;
     padding: 16px 32px;
+	border-radius: 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+	box-shadow: 0 9px #999;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
 }
 
-/*{
-    height: 2.2em!important;
-    width: 8em!important;
-    border-radius: 5px;
-    box-shadow: 3px 3px 9px darkgrey;
-    margin: 2px 0 0 1em;
-}*/
+.button:active {
+  background-color: aliceblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 .rnd-btn {
     background-color: white; 
@@ -39,14 +39,6 @@
     background-color: #008CBA;
     color: white;
 }
-
-/*.rnd-btn:hover{
-    background-color: deepskyblue;
-	color: white;
-	opacity: 1.8;
-    -moz-opacity: 1.8;
-    cursor: pointer;
-}*/
 
 .inError{
     background-color: red !important; 
